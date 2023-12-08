@@ -1,4 +1,4 @@
-Django
+Django==5.0
 djangorestframework==3.2.3
 django-rest-swagger
 django-filter
