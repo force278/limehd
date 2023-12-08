@@ -1,5 +1,5 @@
 Django
-djangorestframework
+djangorestframework==3.2.3
 django-rest-swagger
 django-filter
 markdown
