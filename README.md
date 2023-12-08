@@ -1,2 +1,2 @@
-# limehd🍋‍🟩
-LimeHD task
+# limehd
+Упрощенная веб-версия Limehd
