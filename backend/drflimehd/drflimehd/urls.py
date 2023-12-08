@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from limehd.views import ChannelAPIList
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/playlist', ChannelAPIList.as_view()),
 ]
