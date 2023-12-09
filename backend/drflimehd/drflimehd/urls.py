@@ -15,22 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from limehd.views import ChannelRetrieveUpdateDestroyAPIView, ChannelsListAPIView, ChannelCreateAPIView, ChannelsListCreateAPIView, AdminUserRetrieveUpdateDestroyAPIView, AdminUsersListAPIView, AdminUserCreateAPIView, AdminUsersListCreateAPIView
+from django.urls import path, include
+from limehd.views import ChannelsViewSet, AdminUsersViewSet
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'channel', ChannelsViewSet)
+router.register(r'admin_users', AdminUsersViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # Channel
-    path('channels/', ChannelsListAPIView.as_view()), # получить все каналы
-    path('create_channel/', ChannelCreateAPIView.as_view()), # создать один канал
-    path('create_channels_list/', ChannelsListCreateAPIView.as_view()), # создать список каналов
-    path('channel/<int:pk>/', ChannelRetrieveUpdateDestroyAPIView.as_view()), # чтение, обновление, удаление одного канала
-
-    # AdminUsers
-    path('admins/', ChannelsListAPIView.as_view()), # получить всех админов
-    path('create_admin/', ChannelCreateAPIView.as_view()), # создать одного админа
-    path('create_admins_list/', ChannelsListCreateAPIView.as_view()), # создать список админов
-    path('admin/<int:pk>/', ChannelRetrieveUpdateDestroyAPIView.as_view()), # чтение, обновление, удаление одного админа
-
+    path('', include(router.urls)),
 ]
