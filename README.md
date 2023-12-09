@@ -1,9 +1,12 @@
 # limehd
 Упрощенная веб-версия Limehd
 
-# Запуск
+# Запуск backend
 1. Активируйте виртуальное окружение через activate.bat
-2. Создайте миграцию `python manage.py makemigrate`
-3. Запустите миграцию `python manage.py migrate`
-4. Запустите сервер `python manage.py runserver`
+2. Скачайте все библиотеки `pip install -r configuration`
+3. Создайте миграцию `python manage.py makemigrate`
+4. Запустите миграцию `python manage.py migrate`
+5. Запустите сервер `python manage.py runserver`
 
+# Запуск frontend
+Скоро
