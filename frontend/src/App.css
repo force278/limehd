@@ -1,0 +1,41 @@
+body {
+    background-color: rgba(26, 26, 26, 1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.headerStyle {
+    background-color: rgba(44, 44, 51, 1);
+    display: flex;
+    flex-direction: row;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.headerTextStyle {
+    color: darkgray;
+    padding-left: 50%;
+}
+
+.logoStyle {
+    padding-left: 15px;
+    width: 5%;
+}
+
+.centerBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftBoxStyle {
+    width: 20%;
+    height: auto;
+    background-color: aqua;
+    border-bottom-left-radius: 10px;
+}
+
+.rightBoxStyle {
+    width: 80%;
+    height: auto;
+    background-color: brown;
+    border-bottom-right-radius: 10px;
+}

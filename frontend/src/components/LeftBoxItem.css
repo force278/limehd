@@ -1,0 +1,15 @@
+.LeftBoxItemActiveStyle {
+    font-size: 28px;
+    color: darkgray;
+    text-align: center;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.LeftBoxItemDefaultStyle {
+    font-size: 28px;
+    color: darkgray;
+    text-align: center;
+    background-color: black;
+    cursor: pointer;
+}
