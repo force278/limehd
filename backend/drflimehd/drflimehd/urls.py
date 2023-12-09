@@ -20,7 +20,7 @@ from limehd.views import ChannelRetrieveUpdateDestroyAPIView, ChannelsListAPIVie
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     # Channel
     path('channels/', ChannelsListAPIView.as_view()), # получить все каналы
     path('create_channel/', ChannelCreateAPIView.as_view()), # создать один канал
@@ -32,4 +32,5 @@ urlpatterns = [
     path('create_admin/', ChannelCreateAPIView.as_view()), # создать одного админа
     path('create_admins_list/', ChannelsListCreateAPIView.as_view()), # создать список админов
     path('admin/<int:pk>/', ChannelRetrieveUpdateDestroyAPIView.as_view()), # чтение, обновление, удаление одного админа
+
 ]
