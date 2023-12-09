@@ -16,9 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from limehd.views import ChannelAPIList
+from limehd.views import ChannelRetrieveUpdateDestroyAPIView, ChannelsListAPIView, ChannelCreateAPIView, ChannelsListCreateAPIView, AdminUserRetrieveUpdateDestroyAPIView, AdminUsersListAPIView, AdminUserCreateAPIView, AdminUsersListCreateAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('channels/', ChannelAPIList.as_view())
+    
+    # Channel
+    path('channels/', ChannelsListAPIView.as_view()), # получить все каналы
+    path('create_channel/', ChannelCreateAPIView.as_view()), # создать один канал
+    path('create_channels_list/', ChannelsListCreateAPIView.as_view()), # создать список каналов
+    path('channel/<int:pk>/', ChannelRetrieveUpdateDestroyAPIView.as_view()), # чтение, обновление, удаление одного канала
+
+    # AdminUsers
+    path('admins/', ChannelsListAPIView.as_view()), # получить всех админов
+    path('create_admin/', ChannelCreateAPIView.as_view()), # создать одного админа
+    path('create_admins_list/', ChannelsListCreateAPIView.as_view()), # создать список админов
+    path('admin/<int:pk>/', ChannelRetrieveUpdateDestroyAPIView.as_view()), # чтение, обновление, удаление одного админа
 ]
