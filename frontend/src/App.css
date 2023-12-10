@@ -1,10 +1,10 @@
 body {
     background-color: rgba(26, 26, 26, 1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .headerStyle {
-    background-color: rgba(44, 44, 51, 1);
+    background-color: #1b1c24;
     display: flex;
     flex-direction: row;
     border-top-right-radius: 10px;
@@ -29,13 +29,26 @@ body {
 .leftBoxStyle {
     width: 20%;
     height: auto;
-    background-color: aqua;
+    background-color: #1b1c24;
     border-bottom-left-radius: 10px;
 }
 
 .rightBoxStyle {
     width: 80%;
     height: auto;
-    background-color: brown;
+    background-color: rgb(47, 47, 47);
     border-bottom-right-radius: 10px;
+    padding: 20px;
+}
+
+.addButtonStyle {
+    font-size: larger;
+    margin: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.tableStyle {
+    display: flex;
+    flex-direction: column;
 }

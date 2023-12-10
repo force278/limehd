@@ -1,12 +1,12 @@
 import './LeftBoxItem.css'
 
-function LeftBoxItem({name, active}){
+function LeftBoxItem({index, name, active, setLeftBoxActiveItemState}){
     let style = 'LeftBoxItemDefaultStyle';
     if (active) {
         style = 'LeftBoxItemActiveStyle';
     }
     return (
-        <div className={style}>
+        <div className={style} onClick={() => {setLeftBoxActiveItemState(index)}}>
             {name}
         </div>
     )
