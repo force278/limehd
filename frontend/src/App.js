@@ -1,15 +1,31 @@
 import './App.css';
 import LeftBoxItem from './components/LeftBoxItem.js';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import TableItem from './components/TableItem.js';
+import axios from 'axios'
+import Modal from './components/Modal.js';
 
 function App() {
   const [leftBoxAcviteItemState, setLeftBoxActiveItemState] = useState(0);
   const leftBoxItems = ['PlayList', 'Admin Users'];
-  const tableitems = [
-    {'url':'rossia1', 'name':'Россия 1', 'icon':'https://assets-iptv2022.cdnvideo.ru/static/channel/115/logo_256_1655391177.png'},
-    {'url':'ntv', 'name':'НТВ', 'icon':'https://assets-iptv2022.cdnvideo.ru/static/channel/10100/logo_256_1655385292.png'},
-    {'url':'5kanal', 'name':'5 канал', 'icon':'https://assets-iptv2022.cdnvideo.ru/static/channel/3/logo_256_1683697968.png'}]
+  const [listTableItemsState, setListTableItemsState] = useState(null);
+  const [activeTableItemState, setActiveTableItemState] = useState(null);
+  const [modalState, setModalState] = useState(false);
+
+  
+  useEffect( ()=>{
+    if (leftBoxAcviteItemState === 0) {
+      axios.get('http://localhost:8000/api/channel/')
+      .then(response => {setListTableItemsState(response.data)})
+      .catch(error => {setActiveTableItemState([])})
+    } else if (leftBoxAcviteItemState === 1) {
+      axios.get('http://localhost:8000/api/admin_users/')
+      .then(response => {console.log(response.data)})
+      .catch(error => {console.log(error)})
+    }
+
+  }, [leftBoxAcviteItemState])
+
   return (
     <div >
       <header className='headerStyle'>
@@ -27,16 +43,20 @@ function App() {
           }
         </div>
         <div className='rightBoxStyle'>
-          <button className='addButtonStyle'>{'+'}</button>
+          <img className='addLogoStyle' src='addLogo.png' alt='addLogo'></img>
           <div className='tableStyle'>
             {
-              tableitems.map((item, index)=>(
-                <TableItem key={index} item={item} />
+              listTableItemsState?.map((item, index)=>(
+                activeTableItemState === index ?
+                <TableItem key={index} index={index} item={item} active={true} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
+                :
+                <TableItem key={index} index={index} item={item} active={false} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
               ))
             }
           </div>
         </div>
       </div>
+      <Modal activeTableItemState={activeTableItemState} modalState={modalState} setModalState={setModalState} />
     </div>
   );
 }

@@ -1,7 +1,15 @@
-.TableItemStyle {
+.TableItemDefaultStyle {
     display: flex;
     flex-direction: row;
     background-color: rgb(72, 72, 71);
+    border-radius: 10px;
+    position: relative;
+}
+
+.TableItemActiveStyle {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(131, 131, 130);
     border-radius: 10px;
     position: relative;
 }
@@ -22,8 +30,9 @@
     width: 20px;
     height: 20px;
     padding: 25px;
-    right: 5%;
+    right: 0%;
     position: absolute;
+    cursor: pointer;
 }
 
 .deleteLogoStyle {
@@ -32,4 +41,5 @@
     padding: 25px;
     right: 0%;
     position: absolute;
+    cursor: pointer;
 }

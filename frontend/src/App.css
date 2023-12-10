@@ -41,11 +41,12 @@ body {
     padding: 20px;
 }
 
-.addButtonStyle {
+.addLogoStyle {
     font-size: larger;
     margin: 15px;
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
 .tableStyle {
