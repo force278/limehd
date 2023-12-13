@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 from .models import Channels, AdminUsers
 from .serializers import ChannelsSerializer, AdminUsersSerializer
 from .permissions import ChannelsPermissions, AdminUsersPermissions
@@ -10,6 +10,7 @@ class ChannelsViewSet(viewsets.ModelViewSet):
     queryset = Channels.objects.all()
     serializer_class = ChannelsSerializer
     permission_classes = (ChannelsPermissions,)
+    
 
 
 #_________AdminUsers_________

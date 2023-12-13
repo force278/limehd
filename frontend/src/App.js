@@ -1,4 +1,4 @@
-import './App.css';
+import style from './App.module.css';
 import LeftBoxItem from './components/LeftBoxItem.js';
 import {useEffect, useState} from 'react';
 import TableItem from './components/TableItem.js';
@@ -28,23 +28,24 @@ function App() {
 
   return (
     <div >
-      <header className='headerStyle'>
-        <img src='logo192.png' alt='logo' className='logoStyle'></img>
-        <h2 className='headerTextStyle'>{'Панель управления'}</h2>
+      <header className={style.headerStyle}>
+        <img src='logo192.png' alt='logo' className={style.logoStyle}></img>
+        <h2 className={style.headerTextStyle}>{'Панель управления'}</h2>
       </header>
-      <div className='centerBox'>
-        <div className='leftBoxStyle'>
+      <div className={style.centerBox}>
+        <div className={style.leftBoxStyle}>
           {
             leftBoxItems.map((item, index)=>(
               leftBoxAcviteItemState === index ?
                 <LeftBoxItem key={index} index={index} name={item} active={true} setLeftBoxActiveItemState={setLeftBoxActiveItemState} />
-              : <LeftBoxItem key={index} index={index} name={item} active={false} setLeftBoxActiveItemState={setLeftBoxActiveItemState} />
+                : 
+                <LeftBoxItem key={index} index={index} name={item} active={false} setLeftBoxActiveItemState={setLeftBoxActiveItemState} />
             ))
           }
         </div>
-        <div className='rightBoxStyle'>
-          <img className='addLogoStyle' src='addLogo.png' alt='addLogo'></img>
-          <div className='tableStyle'>
+        <div className={style.rightBoxStyle}>
+          <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo'></img>
+          <div className={style.tableStyle}>
             {
               listTableItemsState?.map((item, index)=>(
                 activeTableItemState === index ?
@@ -56,7 +57,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Modal activeTableItemState={activeTableItemState} modalState={modalState} setModalState={setModalState} />
+      <Modal activeTableItemState={activeTableItemState} setActiveTableItemState={setActiveTableItemState} listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} modalState={modalState} setModalState={setModalState} />
     </div>
   );
 }

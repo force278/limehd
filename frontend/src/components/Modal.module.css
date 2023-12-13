@@ -1,0 +1,85 @@
+.modalInactiveStyle  {
+    opacity:0;
+}
+
+.modalActiveStyle  {
+    z-Index: 1;
+    height:  100%;
+    width: 100%;
+    background-Color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-Items: center;
+    justify-Content: center;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.formStyle  {
+    display: flex;
+    flex-Direction: column;
+    width: 200px;
+    height: max-content;
+    background-Color: #BEBEBE;
+    border-Radius: 10px;
+    position: relative;
+}
+
+.closeBtnStyle {
+    position: absolute;
+    display: flex;
+    right: 0%;
+    border-Width: 0;
+    width: 30px;
+    height: 30px;
+    border-Radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.inputStyle {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.inputText {
+    margin: 0;
+    padding-left: 10%;
+    padding-top: 10%;
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteBtnStyle  {
+    font-size: large;
+    border-Width: 0px;
+    width: 100%;
+    background-color: tomato;
+    border-end-start-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.saveEnableBtnStyle {
+    font-size: large;
+    border-Width: 0px;
+    width: 100%;
+    background-color: rgb(30, 146, 47);
+    border-end-end-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.saveDisableBtnStyle {
+    font-size: large;
+    border-Width: 0px;
+    width: 100%;
+    background-color: rgba(30, 146, 47, 0.6);
+    border-end-end-radius: 10px;
+    text-align: center;
+}
