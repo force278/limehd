@@ -1,9 +1,9 @@
-import styles from './TableItem.module.css';
+import styles from './ChannelItem.module.css';
 
-function TableItem({index, item, active, setActiveTableItemState, setModalState}) {
-    let style = styles.TableItemDefaultStyle;
+function ChannelItem({index, item, active, setActiveTableItemState, setModalState}) {
+    let style = styles.ChannelItemDefaultStyle;
     if (active) {
-        style = styles.TableItemActiveStyle;
+        style = styles.ChannelItemActiveStyle;
     }
     return (
         <div className={style}>
@@ -17,4 +17,4 @@ function TableItem({index, item, active, setActiveTableItemState, setModalState}
     )
 }
 
-export default TableItem;
+export default ChannelItem;

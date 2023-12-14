@@ -1,18 +1,27 @@
 import style from './App.module.css';
 import LeftBoxItem from './components/LeftBoxItem.js';
 import {useEffect, useState} from 'react';
-import TableItem from './components/TableItem.js';
+import ChannelItem from './components/Channel/ChannelItem.js';
+import Modal from './components/Channel/Modal.js';
+import AddModal from './components/Channel/AddModal.js';
+import AdminItem from './components/Admin/AdminItem.js';
+import ModalAdmin from './components/Admin/ModalAdmin.js';
+import AddAdminModal from './components/Admin/AddAdminModal.js';
 import axios from 'axios'
-import Modal from './components/Modal.js';
-import AddModal from './components/AddModal.js';
 
 function App() {
-  const [leftBoxAcviteItemState, setLeftBoxActiveItemState] = useState(0);
   const leftBoxItems = ['PlayList', 'Admin Users'];
+  const [leftBoxAcviteItemState, setLeftBoxActiveItemState] = useState(0);
+
   const [listTableItemsState, setListTableItemsState] = useState(null);
   const [activeTableItemState, setActiveTableItemState] = useState(null);
   const [modalState, setModalState] = useState(false);
   const [addModalState, setAddModalState] = useState(false);
+
+  const [listAdminState, setListAdminState] = useState(null);
+  const [activeAdminState, setActiveAdminState] = useState(null);
+  const [modalAdminState, setModalAdminState] = useState(false);
+  const [addAdminModalState, setAddAdminModalState] = useState(false);
 
   
   useEffect( ()=>{
@@ -23,9 +32,15 @@ function App() {
       })
       .catch(error => {setActiveTableItemState([])})
     } else if (leftBoxAcviteItemState === 1) {
-      axios.get('http://localhost:8000/api/admin_users/')
-      .then(response => {console.log(response.data)})
-      .catch(error => {console.log(error)})
+      axios.get('http://localhost:8000/api/admin_users/',
+      {headers: {
+        'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+        }
+      })
+      .then((response)=>{
+        setListAdminState(response.data)
+      })
+      .catch(error => {setListAdminState([])})
     }
 
   }, [leftBoxAcviteItemState])
@@ -47,33 +62,61 @@ function App() {
             ))
           }
         </div>
-        <div className={style.rightBoxStyle}>
-          <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo' onClick={()=>{setAddModalState(true)}}></img>
-          <div className={style.tableStyle}>
-            {
-              listTableItemsState?.map((item, index)=>(
-                activeTableItemState === index ?
-                <TableItem key={index} index={index} item={item} active={true} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
+        {
+          leftBoxAcviteItemState === 0 ?
+            <div className={style.rightBoxStyle}>
+              <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo' onClick={()=>{setAddModalState(true)}}></img>
+              <div className={style.tableStyle}>
+                {
+                  listTableItemsState?.map((item, index)=>(
+                    activeTableItemState === index ?
+                    <ChannelItem key={index} index={index} item={item} active={true} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
+                    :
+                    <ChannelItem key={index} index={index} item={item} active={false} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
+                  ))
+                }
+              </div>
+              {
+                (modalState && !addModalState) ?
+                <Modal activeTableItemState={activeTableItemState} setActiveTableItemState={setActiveTableItemState} listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} modalState={modalState} setModalState={setModalState} />
                 :
-                <TableItem key={index} index={index} item={item} active={false} setActiveTableItemState={setActiveTableItemState} setModalState={setModalState} />
-              ))
-            }
-          </div>
-        </div>
+                null
+              }
+              {
+                (addModalState && !modalState) ?
+                <AddModal listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} addModalState={addModalState} setAddModalState={setAddModalState} />
+                :
+                null
+              }
+            </div>  
+          :
+            <div className={style.rightBoxStyle}> 
+              <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo' onClick={()=>{setAddAdminModalState(true)}}></img>
+              <div className={style.tableStyle}>
+                {
+                  listAdminState?.map((item, index)=>(
+                    activeTableItemState === index ?
+                    <AdminItem key={index} index={index} item={item} active={true} setActiveAdminState={setActiveAdminState} setModalAdminState={setModalAdminState} />
+                    :
+                    <AdminItem key={index} index={index} item={item} active={false} setActiveAdminState={setActiveAdminState} setModalAdminState={setModalAdminState} />
+                  ))
+                }
+              </div>
+              {
+                (modalAdminState && !addAdminModalState) ?
+                <ModalAdmin activeAdminState={activeAdminState} setActiveAdminState={setActiveAdminState} listAdminState={listAdminState} setListAdminState={setListAdminState} modalAdminState={modalAdminState} setModalAdminState={setModalAdminState} />
+                :
+                null
+              }
+              {
+                (!modalAdminState && addAdminModalState) ?
+                <AddAdminModal listAdminState={listAdminState} setListAdminState={setListAdminState} addAdminModalState={addAdminModalState} setAddAdminModalState={setAddAdminModalState} />
+                :
+                null
+              }
+            </div>
+        }
       </div>
-      {
-        (modalState && !addModalState) ?
-        <Modal activeTableItemState={activeTableItemState} setActiveTableItemState={setActiveTableItemState} listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} modalState={modalState} setModalState={setModalState} />
-        :
-        null
-      }
-      {
-        (addModalState && !modalState) ?
-        <AddModal listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} addModalState={addModalState} setAddModalState={setAddModalState} />
-        :
-        null
-      }
-      
     </div>
   );
 }
