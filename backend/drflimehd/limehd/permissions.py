@@ -3,7 +3,6 @@ from .models import AdminUsers
 
 class ChannelsPermissions(permissions.BasePermission):
     def has_permission(self, request, view):
-        print(request.user)
         if view.action == 'list' or view.action == 'retrieve':
             return True
         elif view.action in ['update', 'partial_update', 'destroy', 'create']:

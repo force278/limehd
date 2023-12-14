@@ -22,33 +22,31 @@ function Modal({ activeTableItemState, setActiveTableItemState, listTableItemsSt
     }, [modalState, activeTableItemState, listTableItemsState])
 
     function save_table_item() {
-        if (enableSaveBtnState) {
-            axios.put(`http://localhost:8000/api/channel/${listTableItemsState[activeTableItemState].id}/`, 
-            {
-                'name': nameRef.current.value,
-                'url': urlRef.current.value,
-                'icon':iconRef.current.value,
-                'stream': streamRef.current.value
-            }, {
-                headers: {
-                    'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
-                }
-            })
-            .then(response => {
-                if (response.data) {
-                    setEnableSaveBtnState(false)
-                }
-            })
-            let tempList = [...listTableItemsState] 
-            tempList[activeTableItemState] = {
-                'id': tempList[activeTableItemState].id,
-                'name': nameRef.current.value,
-                'url': urlRef.current.value,
-                'icon':iconRef.current.value,
-                'stream': streamRef.current.value
+        axios.put(`http://localhost:8000/api/channel/${listTableItemsState[activeTableItemState].id}/`, 
+        {
+            'name': nameRef.current.value,
+            'url': urlRef.current.value,
+            'icon':iconRef.current.value,
+            'stream': streamRef.current.value
+        }, {
+            headers: {
+                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
             }
-            setListTableItemsState(tempList)
+        })
+        .then(response => {
+            if (response.data) {
+                setEnableSaveBtnState(false)
+            }
+        })
+        let tempList = [...listTableItemsState] 
+        tempList[activeTableItemState] = {
+            'id': tempList[activeTableItemState].id,
+            'name': nameRef.current.value,
+            'url': urlRef.current.value,
+            'icon':iconRef.current.value,
+            'stream': streamRef.current.value
         }
+        setListTableItemsState(tempList)
     }
 
     function delete_table_item() {
@@ -66,33 +64,30 @@ function Modal({ activeTableItemState, setActiveTableItemState, listTableItemsSt
     }
 
     return (
-        <div className={modalState ? styles.modalActiveStyle : styles.modalInactiveStyle}>
-            {modalState ?
-                <div className={styles.formStyle} >
-                    <img className={styles.closeBtnStyle} src='deleteLogo.png' alt='deleteLogo' onClick={() => {
-                        setEnableSaveBtnState(true)
-                        setModalState(false)
-                    }}></img>
-                    <p className={styles.inputText}>{'Имя'}</p>
-                    <input className={styles.inputStyle} ref={nameRef}></input>
-                    <p className={styles.inputText}>{'Url'}</p>
-                    <input className={styles.inputStyle} ref={urlRef}></input>
-                    <p className={styles.inputText}>{'Иконка'}</p>
-                    <input className={styles.inputStyle} ref={iconRef}></input>
-                    <p className={styles.inputText}>{'Ссылка'}</p>
-                    <input className={styles.inputStyle} ref={streamRef}></input>
-                    <div className={styles.btnBox}>
-                        <button className={styles.deleteBtnStyle} onClick={delete_table_item}>{'Удалить'}</button>
-                        {
-                            enableSaveBtnState ? 
-                            <button className={styles.saveEnableBtnStyle} onClick={save_table_item}>{'Сохранить'}</button>
-                            :
-                            <button className={styles.saveDisableBtnStyle} onClick={save_table_item}>{'Сохранено'}</button>
-                        }
-                    </div>
+        <div className={styles.modalStyle}>
+            <div className={styles.formStyle} >
+                <img className={styles.closeBtnStyle} src='deleteLogo.png' alt='deleteLogo' onClick={() => {
+                    setEnableSaveBtnState(true)
+                    setModalState(false)
+                }}></img>
+                <p className={styles.inputText}>{'Имя'}</p>
+                <input className={styles.inputStyle} ref={nameRef}></input>
+                <p className={styles.inputText}>{'Url'}</p>
+                <input className={styles.inputStyle} ref={urlRef}></input>
+                <p className={styles.inputText}>{'Иконка'}</p>
+                <input className={styles.inputStyle} ref={iconRef}></input>
+                <p className={styles.inputText}>{'Ссылка'}</p>
+                <input className={styles.inputStyle} ref={streamRef}></input>
+                <div className={styles.btnBox}>
+                    <button className={styles.deleteBtnStyle} onClick={delete_table_item}>{'Удалить'}</button>
+                    {
+                        enableSaveBtnState ? 
+                        <button className={styles.saveEnableBtnStyle} onClick={save_table_item}>{'Сохранить'}</button>
+                        :
+                        <button className={styles.saveDisableBtnStyle} onClick={save_table_item}>{'Сохранено'}</button>
+                    }
                 </div>
-                : null
-            }
+            </div>
         </div>
     )
 }

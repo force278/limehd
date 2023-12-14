@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import TableItem from './components/TableItem.js';
 import axios from 'axios'
 import Modal from './components/Modal.js';
+import AddModal from './components/AddModal.js';
 
 function App() {
   const [leftBoxAcviteItemState, setLeftBoxActiveItemState] = useState(0);
@@ -11,6 +12,7 @@ function App() {
   const [listTableItemsState, setListTableItemsState] = useState(null);
   const [activeTableItemState, setActiveTableItemState] = useState(null);
   const [modalState, setModalState] = useState(false);
+  const [addModalState, setAddModalState] = useState(false);
 
   
   useEffect( ()=>{
@@ -46,7 +48,7 @@ function App() {
           }
         </div>
         <div className={style.rightBoxStyle}>
-          <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo'></img>
+          <img className={style.addLogoStyle} src='addLogo.png' alt='addLogo' onClick={()=>{setAddModalState(true)}}></img>
           <div className={style.tableStyle}>
             {
               listTableItemsState?.map((item, index)=>(
@@ -59,7 +61,19 @@ function App() {
           </div>
         </div>
       </div>
-      <Modal activeTableItemState={activeTableItemState} setActiveTableItemState={setActiveTableItemState} listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} modalState={modalState} setModalState={setModalState} />
+      {
+        (modalState && !addModalState) ?
+        <Modal activeTableItemState={activeTableItemState} setActiveTableItemState={setActiveTableItemState} listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} modalState={modalState} setModalState={setModalState} />
+        :
+        null
+      }
+      {
+        (addModalState && !modalState) ?
+        <AddModal listTableItemsState={listTableItemsState} setListTableItemsState={setListTableItemsState} addModalState={addModalState} setAddModalState={setAddModalState} />
+        :
+        null
+      }
+      
     </div>
   );
 }
