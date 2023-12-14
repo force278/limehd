@@ -16,7 +16,9 @@ function App() {
   useEffect( ()=>{
     if (leftBoxAcviteItemState === 0) {
       axios.get('http://localhost:8000/api/channel/')
-      .then(response => {setListTableItemsState(response.data)})
+      .then(response => {
+        setListTableItemsState(response.data)
+      })
       .catch(error => {setActiveTableItemState([])})
     } else if (leftBoxAcviteItemState === 1) {
       axios.get('http://localhost:8000/api/admin_users/')

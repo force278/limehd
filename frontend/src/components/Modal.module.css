@@ -82,4 +82,5 @@
     background-color: rgba(30, 146, 47, 0.6);
     border-end-end-radius: 10px;
     text-align: center;
+    cursor: pointer;
 }
