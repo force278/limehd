@@ -2,7 +2,7 @@ import styles from './ModalAdmin.module.css'
 import axios from 'axios'
 import {useEffect, useRef, useState} from 'react'
 
-function ModalAdmin({ activeAdminState, setActiveAdminState, listAdminState, setListAdminState, modalAdminState, setModalAdminState}) {
+function ModalAdmin({ tokenState, activeAdminState, setActiveAdminState, listAdminState, setListAdminState, modalAdminState, setModalAdminState}) {
     const [enableSaveBtnState, setEnableSaveBtnState] =  useState(true);
     const usernameRef = useRef();
     const passwordRef = useRef();
@@ -11,14 +11,14 @@ function ModalAdmin({ activeAdminState, setActiveAdminState, listAdminState, set
         if (modalAdminState) {
             axios.get(`http://localhost:8000/api/admin_users/${listAdminState[activeAdminState].id}`,
             {headers: {
-                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                'Authorization': `Token ${tokenState}`
             }})
             .then(response => {
                 usernameRef.current.value = response.data.username;
                 passwordRef.current.value = response.data.password;
             })
         }
-    }, [modalAdminState, activeAdminState, listAdminState])
+    }, [modalAdminState, activeAdminState, listAdminState, tokenState])
 
     function save_table_item() {
         axios.put(`http://localhost:8000/api/admin_users/${listAdminState[activeAdminState].id}/`, 
@@ -27,7 +27,7 @@ function ModalAdmin({ activeAdminState, setActiveAdminState, listAdminState, set
             'password': passwordRef.current.value
         }, {
             headers: {
-                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                'Authorization': `Token ${tokenState}`
             }
         })
         .then(response => {
@@ -47,7 +47,7 @@ function ModalAdmin({ activeAdminState, setActiveAdminState, listAdminState, set
     function delete_table_item() {
         axios.delete(`http://localhost:8000/api/admin_users/${listAdminState[activeAdminState].id}/`, {
                 headers: {
-                    'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                    'Authorization': `Token ${tokenState}`
                 }
             })
             let tempList = [...listAdminState] 

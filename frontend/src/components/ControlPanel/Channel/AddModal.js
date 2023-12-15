@@ -2,7 +2,7 @@ import styles from './AddModal.module.css';
 import {useRef} from 'react';
 import axios from 'axios';
 
-function AddModal({listTableItemsState, setListTableItemsState, addModalState, setAddModalState}) {
+function AddModal({tokenState, listTableItemsState, setListTableItemsState, addModalState, setAddModalState}) {
     const nameRef = useRef();
     const urlRef = useRef();
     const iconRef = useRef();
@@ -17,7 +17,7 @@ function AddModal({listTableItemsState, setListTableItemsState, addModalState, s
             'stream': streamRef.current.value
         }, {
             headers: {
-                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                'Authorization': `Token ${tokenState}`
             }
         }).then(response=>{
             let tempList = [...listTableItemsState, {

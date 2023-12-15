@@ -2,7 +2,7 @@ import styles from './Modal.module.css'
 import axios from 'axios'
 import {useEffect, useRef, useState} from 'react'
 
-function Modal({ activeTableItemState, setActiveTableItemState, listTableItemsState, setListTableItemsState, modalState, setModalState}) {
+function Modal({ tokenState, activeTableItemState, setActiveTableItemState, listTableItemsState, setListTableItemsState, modalState, setModalState}) {
     const [enableSaveBtnState, setEnableSaveBtnState] =  useState(true);
     const nameRef = useRef();
     const urlRef = useRef();
@@ -30,7 +30,7 @@ function Modal({ activeTableItemState, setActiveTableItemState, listTableItemsSt
             'stream': streamRef.current.value
         }, {
             headers: {
-                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                'Authorization': `Token ${tokenState}`
             }
         })
         .then(response => {
@@ -52,7 +52,7 @@ function Modal({ activeTableItemState, setActiveTableItemState, listTableItemsSt
     function delete_table_item() {
         axios.delete(`http://localhost:8000/api/channel/${listTableItemsState[activeTableItemState].id}/`, {
                 headers: {
-                    'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                    'Authorization': `Token ${tokenState}`
                 }
             })
             let tempList = [...listTableItemsState] 

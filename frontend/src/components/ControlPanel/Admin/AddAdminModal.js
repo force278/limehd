@@ -2,7 +2,7 @@ import styles from './AddAdminModal.module.css';
 import {useRef} from 'react';
 import axios from 'axios';
 
-function AddAdminModal({listAdminState, setListAdminState, addAdminModalState, setAddAdminModalState}) {
+function AddAdminModal({tokenState, listAdminState, setListAdminState, addAdminModalState, setAddAdminModalState}) {
     const usernameRef = useRef();
     const passwordRef = useRef();
 
@@ -15,7 +15,7 @@ function AddAdminModal({listAdminState, setListAdminState, addAdminModalState, s
             
         }, {
             headers: {
-                'Authorization': 'Token 3f9507410a659c714130bb2d9b4fa941c12888c5'
+                'Authorization': `Token ${tokenState}`
             }
         }).then(response=>{
             let tempList = [...listAdminState, {
