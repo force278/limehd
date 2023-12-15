@@ -17,3 +17,5 @@ class AdminUsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+    def create(self, validated_data):
+        return User.objects.create_superuser(username=validated_data['username'], password=validated_data['password'])
