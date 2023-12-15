@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from .models import Channels, AdminUsers
 from .serializers import ChannelsSerializer, AdminUsersSerializer
 from .permissions import ChannelsPermissions, AdminUsersPermissions
+from django.contrib.auth.models import User
 
 
 #_________Channels_________
@@ -16,6 +17,6 @@ class ChannelsViewSet(viewsets.ModelViewSet):
 #_________AdminUsers_________
 
 class AdminUsersViewSet(viewsets.ModelViewSet):
-    queryset = AdminUsers.objects.all()
+    queryset = User.objects.all()
     serializer_class = AdminUsersSerializer
     permission_classes = (AdminUsersPermissions,)

@@ -10,7 +10,10 @@ function Login({setTokenState}) {
         axios.post(`http://localhost:8000/auth/token/login/`, {
             'username': usernameRef.current.value,
             'password': passwordRef.current.value
-        }).then(response=>{setTokenState(response.data.auth_token)})
+        }).then(response=>{
+            localStorage.setItem('token', response.data.auth_token)
+            setTokenState(response.data.auth_token)
+        })
     }
 
     return (
