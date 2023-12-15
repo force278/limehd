@@ -8,11 +8,10 @@ function AddAdminModal({tokenState, listAdminState, setListAdminState, addAdminM
 
 
     function addItem() {
-        axios.post(`http://localhost:8000/api/admin_users/`, 
+        axios.post(`http://127.0.0.1:8000/admin/auth/user/add/`,
         {
             'username': usernameRef.current.value,
             'password': passwordRef.current.value
-            
         }, {
             headers: {
                 'Authorization': `Token ${tokenState}`

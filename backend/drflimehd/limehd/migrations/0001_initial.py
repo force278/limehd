@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name="Channels",
+            name="Main",
             fields=[
                 (
                     "id",
