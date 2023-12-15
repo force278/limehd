@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Main(props) {
     const [channel, setStateChannel] = useState(null)
+    const [value, setValueSearch] = useState('');
 
     useEffect(() => {
         // Update the document title using the browser API
@@ -16,13 +17,19 @@ function Main(props) {
          }, []
     );
 
+
+    const filterChannels = channel?
+        channel.filter((elem) =>
+            elem.name.toLowerCase().includes(value.toLowerCase())
+        )
+        : [];
     return (
         <div>
-            <Header setStateChannel={setStateChannel} channels={channel}/>
+            {channel ? <Header setValueSearch={setValueSearch}/>: null}
             <div >
                 <div className={styles.channels}>
                     {channel ?
-                        channel.map((channel, index)=>{
+                        filterChannels.map((channel, index)=>{
                             return(
                                 <Channel channel={channel} index={index}/>
                             )
