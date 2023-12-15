@@ -5,7 +5,6 @@ import Login from './components/Login/Login.js';
 
 function App() {
   const [tokenState, setTokenState] = useState(localStorage.getItem('token'));
-  
 
   return (
     <div>

@@ -45,11 +45,17 @@ function ControlPanel({tokenState, setTokenState}) {
 
   }, [leftBoxAcviteItemState, tokenState])
 
+
   return (
     <div >
       <header className={style.headerStyle}>
         <img src='logo192.png' alt='logo' className={style.logoStyle}></img>
         <h2 className={style.headerTextStyle}>{'Панель управления'}</h2>
+        <button className={style.exit}
+        onClick={()=>{
+            setTokenState(null)
+            localStorage.removeItem("token")}
+        }> Выйти </button>
       </header>
       <div className={style.centerBox}>
         <div className={style.leftBoxStyle}>
