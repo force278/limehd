@@ -30,7 +30,7 @@ function Main() {
                     {channel ?
                         filterChannels.map((channel, index)=>{
                             return(
-                                <Channel channel={channel} index={index}/>
+                                <Channel key={index} channel={channel} index={index}/>
                             )
                         })
                     :null}
