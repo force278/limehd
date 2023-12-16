@@ -8,7 +8,7 @@ function AddAdminModal({tokenState, listAdminState, setListAdminState, addAdminM
 
 
     function addItem() {
-        axios.post(`http://127.0.0.1:8000/admin/auth/user/add/`,
+        axios.post(`http://127.0.0.1:8000/api/admin_users/`,
         {
             'username': usernameRef.current.value,
             'password': passwordRef.current.value
@@ -23,8 +23,9 @@ function AddAdminModal({tokenState, listAdminState, setListAdminState, addAdminM
                 'password': passwordRef.current.value
             }] 
             setListAdminState(tempList)
+            setAddAdminModalState(false)
         }).catch(error=>{
-            alert('Заполните все поля')
+            alert('Ошибка, чекни network')
         })
         
     }
