@@ -4,14 +4,13 @@ import Channel from './Channel.js';
 import Header from './Header.js';
 import axios from "axios";
 
-function Main(props) {
+function Main() {
     const [channel, setStateChannel] = useState(null)
     const [value, setValueSearch] = useState('');
 
     useEffect(() => {
-        // Update the document title using the browser API
-         axios.get(`http://localhost:8000/api/channel/`).
-         then(response => {
+         axios.get(`http://localhost:8000/api/channel/`)
+         .then(response => {
                 setStateChannel(response.data)
             })
          }, []
