@@ -1,11 +1,15 @@
 body{
     margin: 0;
-    background-color: black
+    background-color: rgb(26, 26, 26)
 }
 
 .channels{
     margin: 20px;
     display:flex;
-    gap: 15px;
     align-items: center;
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    padding: 20px;
 }

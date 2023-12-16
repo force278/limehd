@@ -4,7 +4,7 @@
 }
 
 .channel{
-    padding: 30px
+    padding: 10px 20px
 }
 
 .channel:hover {
@@ -14,5 +14,5 @@
 
 a{
    text-decoration: none;
-   color: white;
+   color: rgb(188, 197, 205);
 }

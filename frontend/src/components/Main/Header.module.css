@@ -1,8 +1,14 @@
 
 
-.header{
-    margin:0 auto;
-    background-color: grey;
+.header {
     display: flex;
+    align-items: center;
+
+    width: 100%;
+
     gap: 35px;
+
+    margin: 0 auto;
+
+    background-color: rgb(44, 44, 51);
 }

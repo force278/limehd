@@ -1,6 +1,21 @@
-.input{
-margin-top:13px;
- width: 1000px;
- height: 70px;
- font-size: 50px
+input{
+    width: 75%;
+    height: 70px;
+
+    padding-left: 20px;
+
+    border-radius: 10px;
+
+    background-color: rgb(72, 78, 83);
+
+    color: rgb(188, 197, 205);
+    font-size: 50px;
+    
+    caret-color: rgb(0, 125, 255);
+    outline: none;
+    border: none;
+}
+
+input::placeholder {
+    color: rgb(188, 197, 205);
 }
