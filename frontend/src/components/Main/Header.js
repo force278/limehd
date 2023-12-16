@@ -5,7 +5,7 @@ import Search from './Search.js'
 function Header({setValueSearch}) {
     return (
             <div className={styles.header}>
-                <img src="LogoMain.png" width="100px" height="100px"/>
+                <img src="LogoMain.png" alt='LogoMain' width="100px" height="100px"/>
                 <Search setValueSearch={setValueSearch}/>
             </div>
     )
