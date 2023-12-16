@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './Channel.module.css'
-import axios from "axios";
 
 function Channel({channel,index}) {
 
