@@ -1,4 +1,4 @@
-input{
+.input{
     width: 75%;
     height: 70px;
 
@@ -16,6 +16,6 @@ input{
     border: none;
 }
 
-input::placeholder {
+.input::placeholder {
     color: rgb(188, 197, 205);
 }
