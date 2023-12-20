@@ -7,6 +7,7 @@ function Header({setValueSearch}) {
             <div className={styles.header}>
                 <img src="LogoMain.png" alt='LogoMain' width="100px" height="100px"/>
                 <Search setValueSearch={setValueSearch}/>
+                <a href='/panel' className={styles.a}>Вход</a>
             </div>
     )
 }

@@ -19,6 +19,7 @@ function Login({setTokenState}) {
     return (
         <div className={styles.modalStyle}>
             <div className={styles.formStyle} >
+                <a href='/' className={styles.toMain}>&lt; На главную</a>
                 <p className={styles.inputText}>{'Username'}</p>
                 <input className={styles.inputStyle} ref={usernameRef}></input>
                 <p className={styles.inputText}>{'Password'}</p>

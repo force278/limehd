@@ -21,6 +21,7 @@
     background-Color: #BEBEBE;
     border-Radius: 10px;
     position: relative;
+    padding: 10px;
 }
 
 .closeBtnStyle {
@@ -36,19 +37,19 @@
 }
 
 .inputStyle {
-    margin-left: 10%;
-    margin-right: 10%;
+    width: calc(100% - 10px);
 }
 
 .inputText {
     margin: 0;
-    padding-left: 10%;
     padding-top: 10%;
 }
 
 .btnBox {
     display: flex;
     flex-direction: row;
+
+    margin-top: 10px;
 }
 
 .LoginBtnStyle {
@@ -56,8 +57,12 @@
     border-Width: 0px;
     width: 100%;
     background-color: rgb(30, 146, 47);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    padding: 5px 0;
+}
+
+.toMain {
+    color: black;
 }

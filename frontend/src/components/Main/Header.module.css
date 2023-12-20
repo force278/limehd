@@ -1,6 +1,7 @@
 
-
 .header {
+    box-sizing: border-box;
+
     display: flex;
     align-items: center;
 
@@ -8,7 +9,11 @@
 
     gap: 35px;
 
-    margin: 0 auto;
+    padding-right: 35px;
 
     background-color: rgb(44, 44, 51);
+}
+
+.a {
+    font-size: 20px;
 }
